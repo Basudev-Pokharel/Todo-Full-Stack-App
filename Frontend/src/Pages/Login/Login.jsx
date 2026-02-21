@@ -41,6 +41,7 @@ const Login = () => {
                 {loginError?.email?.[0] && <p className='text-red'>{loginError?.email?.[0]}</p>}
                 <input type="password" placeholder='Password' name='password' className='p-0.5' onChange={handleChange} />
                 {loginError?.password?.[0] && <p className='text-red'>{loginError?.password?.[0]}</p>}
+                {loginError?.login_error && <p className='text-red'>{loginError?.login_error}</p>}
                 {!loginLoading && <button className='hero-btn w-100'>Login &#8594; </button>}
                 {loginLoading && <button className='hero-btn w-100' disabled>Wait ... </button>}
                 <p>Don't have account? <Link to='/sign-up' className={`text-decoration-none text-color ${style.register}`}>Register</Link></p>

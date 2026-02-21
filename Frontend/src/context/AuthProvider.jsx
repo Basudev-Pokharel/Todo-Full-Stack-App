@@ -42,6 +42,7 @@ const AuthProvider = ({ children }) => {
             }
 
         } catch (err) {
+            console.log(err.response);
             setLoginError(err?.response?.data?.errors);
         }
         finally {
