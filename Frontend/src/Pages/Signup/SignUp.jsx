@@ -29,7 +29,7 @@ const SignUp = () => {
     return (
         <section className="min-h-80 flex items-center justify-center flex-col gap-1  text-center">
             <h2>Register your Credentials</h2>
-            <form onSubmit={SubmitForm} className='flex gap-1 flex-col border' style={{ width: 'min(300px)' }}>
+            <form onSubmit={SubmitForm} className='flex gap-1 flex-col' style={{ width: 'min(300px)' }}>
                 <input type="text" name='name' placeholder='Name' className='p-0.5' autoFocus onChange={handleChange} />
                 {registerError?.name?.[0] && <p className='text-red'>{registerError?.name?.[0]}</p>}
                 <input type="text" name='email' placeholder='Email' className='p-0.5' autoFocus onChange={handleChange} />

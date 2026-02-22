@@ -3,7 +3,7 @@ import style from './Dashboard.module.css'
 import { DataContext } from '../../context/DataProvider';
 
 const Dashboard = () => {
-    let { projects, getProjects, setProjects, projectLoading, markTaskCompleted, deleteCompletedTask, addTaskInProject, addTaskLoading, addTaskError, addProjectBackend, addProjectLoading, addProjectError } = useContext(DataContext);
+    let { projects, getProjects, setProjects, projectLoading, markTaskCompleted, deleteCompletedTask, addTaskInProject, addTaskLoading, addTaskError, addProjectBackend, addProjectLoading, addProjectError, deleteProject } = useContext(DataContext);
     const [taskOpen, setTaskOpen] = useState({
         id: null,
         isOpen: false
@@ -88,15 +88,24 @@ const Dashboard = () => {
 
     }
 
+    // For deleting projects
+    const handleDeleteProject = async (projectId) => {
+        console.log("Delete project with id:", projectId);
+        let success = await deleteProject(projectId);
+        if (success) {
+            console.log("Project deleted successfully");
+        }
+    }
+
 
     return (
-        <section className={`${style.dashboard_section} border p-1 flex flex-col items-center justify-center min-h-80`}>
-            <div className='flex gap-1 justify-between  border w-100 items-center'>
+        <section className={`${style.dashboard_section} p-1 flex flex-col items-center justify-center min-h-80`}>
+            <div className='flex gap-1 justify-between w-100 items-center'>
                 <h1>Projects</h1>
                 <button className={`${style.add_btn} btn`} onClick={() => { setAddProject(prev => !prev) }}> {addProject ? <>&#215;</> : <>&#43;</>}</button>
             </div>
-            {addProject && <div className={`${style.add_project_container} border`}>
-                <form onSubmit={handleProjectSubmit} className='flex gap-0.5 items-center justify-between border'>
+            {addProject && <div className={`${style.add_project_container}`}>
+                <form onSubmit={handleProjectSubmit} className='flex gap-0.5 items-center justify-between'>
                     <input type="text" name="name" id="" placeholder="Project Name" className="border p-1 w-full" onChange={handleProjectChange} />
 
                     <input type="text" name="description" id="" placeholder="Project Description" className="border p-1 w-full mt-1" onChange={handleProjectChange} />
@@ -107,7 +116,7 @@ const Dashboard = () => {
                 {addProjectError?.name?.[0] && <p className='text-red'>{addProjectError?.name?.[0]}</p>}
                 {addProjectError?.description?.[0] && <p className='text-red'>{addProjectError?.description?.[0]}</p>}
             </div>}
-            <div className='flex items-center justify-center flex-col gap-1 w-100'>
+            <div className='flex items-center justify-center flex-col gap-1 w-100' style={{ flex: 1 }}>
                 {projects.length === 0 && !projectLoading && <p>No projects found. Please add some projects.</p>}
                 {projectLoading && <p>Loading projects...</p>}
                 {projects.length > 0 && !projectLoading && (
@@ -115,7 +124,7 @@ const Dashboard = () => {
                         {projects.map((project, idx) => (
                             <li key={project.id} className='flex flex-col gap-0.5'>
                                 <div className='flex justify-between items-center my-0.5'>
-                                    <h3>{idx + 1}. {project.project_name}</h3>
+                                    <h3>{idx + 1}. {project.project_name} <button className={style.delete_button} onClick={() => { handleDeleteProject(project.id) }}>&#128465;</button> </h3>
                                     <p className={style.time_ago}>{calculateTimeWhenCreated(project.created_at)}</p>
                                 </div>
                                 <h3>{project.description}</h3>
@@ -130,7 +139,7 @@ const Dashboard = () => {
                                 </div>
 
                                 {/* //Tasks things */}
-                                {taskOpen.id === project.id && taskOpen.isOpen && project.tasks.length > 0 && <ul className='flex flex-col gap-0.5 border p-1 text-white'>
+                                {taskOpen.id === project.id && taskOpen.isOpen && project.tasks.length > 0 && <ul className={`flex flex-col gap-0.5 p-1 text-white ${style.tasks_container}`}>
                                     {project.tasks.map((task, idx) => (
                                         <li key={task.id} className={`flex justify-between items-center`}>
                                             <p className={`${task.is_completed == 1 && style.task_completed}`}>

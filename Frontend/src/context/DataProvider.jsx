@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 import { API } from '../Services/api';
 
 export const DataContext = createContext(null);
@@ -11,6 +11,20 @@ const DataProvider = ({ children }) => {
     // For adding projetcs
     const [addProjectLoading, setAddProjectLoading] = useState(false)
     const [addProjectError, setAddProjectError] = useState(false)
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [openNav, setOpenNav] = useState(false)
+
+    // FOr themes across components
+    const [theme, setTheme] = useState(
+        localStorage.getItem("theme") || "dark"
+    );
+
+    useEffect(() => {
+        const handleResize = () => setWindowWidth(window.innerWidth);
+        window.addEventListener("resize", handleResize);
+
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
 
 
@@ -22,7 +36,6 @@ const DataProvider = ({ children }) => {
             if (response.status === 200) {
                 setProjects(response.data.projects);
             }
-            // API call here
         }
         catch (err) {
             console.error("Get Projects error:", err);
@@ -92,22 +105,42 @@ const DataProvider = ({ children }) => {
         try {
             setAddProjectLoading(true);
             let response = await API.post('create_project', projectDetails);
-            console.log(response)
+            if (response?.data?.status === true) {
+                getProjects();
+                return true;
+            }
         }
         catch (err) {
-            console.log(err.response);
             setAddProjectError(err?.response?.data?.errors);
         }
         finally {
             setAddProjectLoading(false);
         }
-
     }
+    // Delete project API call
+    async function deleteProject(project_id) {
+        try {
+            let response = await API.delete(`delete_project/${project_id}`);
+            console.log(response);
+            if (response?.data?.status === true) {
+                getProjects();
+                return true;
+            }
+        }
+        catch (err) {
+            console.log(err.response)
+        }
+        finally {
+            setAddProjectLoading(false);
+        }
+    }
+
+    // For responsive Header
 
 
 
     return (
-        <DataContext.Provider value={{ projects, setProjects, getProjects, projectLoading, markTaskCompleted, deleteCompletedTask, addTaskInProject, addTaskLoading, addTaskError, addProjectError, addProjectLoading, addProjectBackend }}>
+        <DataContext.Provider value={{ projects, setProjects, getProjects, projectLoading, markTaskCompleted, deleteCompletedTask, addTaskInProject, addTaskLoading, addTaskError, addProjectError, addProjectLoading, addProjectBackend, deleteProject, windowWidth, setOpenNav, openNav, setTheme, theme }}>
             {children}
         </DataContext.Provider>
     )

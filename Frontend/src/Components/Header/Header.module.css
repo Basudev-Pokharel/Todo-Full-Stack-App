@@ -12,5 +12,26 @@
     font-size: 18px;
     font-weight: 500;
 }
-
-
+.header_container{
+    background-color: var(--surface-color);
+}
+.theme_toogle{
+    font-size: 18px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: transparent;
+}
+.menu_btn{
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+@media (max-width: 600px) {
+    .navigation ul{
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+}

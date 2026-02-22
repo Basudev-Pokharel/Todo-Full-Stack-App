@@ -1,23 +1,45 @@
-/* Reset paddings and margins */
+/* Reset paddings and margins  and other global styles*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+input{
+    border-radius:  4px; 
+}
+body{
+      font-family: "Inter", sans-serif;
 
+}
 /* // Colors variables */
-:root{
+:root {
   --primary-color: #4CAF50;
   --secondary-color: #ff3c00;
   --background-color: #f0f0f0;
+
   --text-color: #333;
   --white-color: #fff;
+
+  /* Header & Footer */
+  --surface-color: #e5e5e5; 
+
+  /* Cards / components */
+  --card-color: #f9f9f9; 
 }
-HTML[data-theme='dark']{
+
+html[data-theme='dark'] {
   --primary-color: #4CAF50;
   --secondary-color: #ff3c00;
   --background-color: #333;
+
   --text-color: #f0f0f0;
+
+  /* Header & Footer */
+  --surface-color: #2a2a2a; 
+
+  /* Cards / components */
+  --card-color: #3a3a3a; 
 }
 
 body {
@@ -104,6 +126,13 @@ p{
     margin: 0.5rem 0;
 }
 
+/* Cursor POinter */
+.cursor-pointer{
+    cursor: pointer;
+}
+
+
+
 /* /Button styles */ 
 .btn{
 background-color: var(--secondary-color);
@@ -150,4 +179,18 @@ transition: background-color 0.4s ease, color 0.4s ease;
     border: 2px solid var(--secondary-color);
     background-color: var(--white-color);
     color: var(--secondary-color);
+}
+
+
+/* // Font sizes and styles with smaller screens */
+@media (max-width: 600px) {
+    h1{
+        font-size: 2.5rem;
+    }
+    h2{
+        font-size: 1.8rem;
+    }
+    p{
+        font-size: 1rem;
+    }
 }

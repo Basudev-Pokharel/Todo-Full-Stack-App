@@ -9,13 +9,6 @@ import ProtectedRoute from './Auth/ProtectedRoute';
 import Dashboard from './Pages/Dashboard/Dashboard';
 
 function App() {
-  const [theme, setTheme] = useState(
-    localStorage.getItem("theme") || "dark"
-  );
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-  }, [theme]);
 
   const router = createBrowserRouter([
     {
