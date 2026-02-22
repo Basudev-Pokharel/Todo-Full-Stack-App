@@ -23,6 +23,8 @@ todo-app/
     │
     ├─ frontend/ <-- React frontend
     │ └─ ...
+    │ 
+    ├─ images/ 
     │
     └─ README.md <-- This file
 ```
@@ -31,15 +33,15 @@ todo-app/
 
 **Backend**: Laravel, PHP, MySQL, Sanctum
 
-**Frontend**: React, Axios (or Fetch API), CSS/Bootstrap/Tailwind (optional)
+**Frontend**: React, Axios, CSS(Vanilla)
 
 **Version Control**: Git & GitHub
 
 ## Running Instructions
 ```bash
-git clone <this-repo-link>
+git clone https://github.com/Basudev-Pokharel/Todo-Full-Stack-App.git
 
-cd <this-repo-local-name>
+cd Todo-Full-Stack-App
 
 # Run Backend First
 cd Backend
@@ -54,3 +56,21 @@ cd Frontend
 npm install
 npm run dev
 ```
+
+
+# Images for your reference
+## Desktop 
+<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; max-width: 800px; margin: auto;">
+  <img src="./images/Desktop_home.png" alt="Desktop Home" style="width: 100%; border-radius: 5px;" />
+  <img src="./images/Desktop_login.png" alt="Desktop Login" style="width: 100%; border-radius: 5px;" />
+  <img src="./images/Desktop_dashboard.png" alt="Desktop Dashboard" style="width: 100%; border-radius: 5px;" />
+</div>
+
+## Mobile
+<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; max-width: 800px; margin: auto;">
+  <img src="./images/movile_home.png" alt="Mobile Home" style="width: 100%; border-radius: 5px;" />
+  <img src="./images/mobile_dashboard.png" alt="Mobile Dashboard" style="width: 100%; border-radius: 5px;" />
+  <img src="./images/mobile_add-project.png" alt="Mobile project add" style="width: 100%; border-radius: 5px;" />
+  <img src="./images/mobile_task_add.png" alt="MobileTask add" style="width: 100%; border-radius: 5px;" />
+  <img src="./images/mobile_finished.png" alt="MobileTask add" style="width: 100%; border-radius: 5px;" />
+</div>

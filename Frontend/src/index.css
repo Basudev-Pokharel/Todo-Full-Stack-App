@@ -24,7 +24,7 @@ body{
   /* Header & Footer */
   --surface-color: #e5e5e5; 
 
-  /* Cards / components */
+  /* Cards  */
   --card-color: #f9f9f9; 
 }
 
@@ -38,7 +38,7 @@ html[data-theme='dark'] {
   /* Header & Footer */
   --surface-color: #2a2a2a; 
 
-  /* Cards / components */
+  /* Cards  */
   --card-color: #3a3a3a; 
 }
 
