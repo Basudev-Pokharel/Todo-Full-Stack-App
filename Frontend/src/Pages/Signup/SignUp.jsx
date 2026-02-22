@@ -21,7 +21,6 @@ const SignUp = () => {
     }
     const SubmitForm = async (e) => {
         e.preventDefault();
-        console.log(formData);
         let success = await register(formData);
         if (success) navigate('/login', { state: { message: 'Registration successful. Please login.' } });
     }

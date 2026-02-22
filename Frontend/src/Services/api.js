@@ -5,10 +5,10 @@ export const API = axios.create({
   headers: {'Content-Type': 'application/json'},
 });
 
-// API.interceptors.request.use(function (config) {
-//     const token = localStorage.getItem('token');
-//     if (token) {
-//         config.headers['Authorization'] = `Bearer ${token}`;
-//     }
-//     return config;
-// });
+API.interceptors.request.use(function (config) {
+    const token = localStorage.getItem('token');
+    if (token) {
+        config.headers['Authorization'] = `Bearer ${token}`;
+    }
+    return config;
+});

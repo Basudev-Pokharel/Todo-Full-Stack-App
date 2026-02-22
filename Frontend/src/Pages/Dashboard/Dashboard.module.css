@@ -1,0 +1,80 @@
+.add_btn{
+    font-weight: 900;
+    font-size: 30px;
+    padding: 8px;
+    line-height: 20px;
+}
+.time_ago{
+    font-size: 12px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 2px 8px;
+    border-radius: 100px;
+}
+
+.project_container{
+    width: 100%;
+    /* width: 600px; */
+    max-width: 600px;
+}
+.tasks_button{
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    width: fit-content;
+    margin: auto;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+.add_task_btn{
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    width: fit-content;
+    margin: auto;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+.task_length{
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    padding: 2px 6px;
+    text-align: center;
+    border-radius: 100px;
+    font-size: 12px;
+}
+.task_completed_button{
+    padding: 2px;
+    color: var(--secondary-color);
+    border-radius: 4px;
+    cursor: pointer;
+}
+.task_completed{
+    text-decoration: line-through;
+}
+.task_delete{
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 4px;
+    padding: 2px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.icon{
+    font-size: 25px;
+    /* line-height: 15px; */
+    text-align: center;
+    margin: 0 2px;
+}
+@media (max-width: 600px) {
+    .dashboard_section{
+        padding: 0.5rem;
+    }
+}

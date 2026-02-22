@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 import { API } from '../Services/api.js';
 import { useNavigate } from 'react-router';
 
@@ -8,6 +8,16 @@ const AuthProvider = ({ children }) => {
     const [registerLoading, setRegisterLoading] = useState(false);
     const [loginError, setLoginError] = useState(null);
     const [loginLoading, setLoginLoading] = useState(false);
+    const [user, setUser] = useState(null);
+
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (token && user) {
+            setUser(user);
+        }
+    }, [])
 
 
     // Function for Register User
@@ -30,19 +40,17 @@ const AuthProvider = ({ children }) => {
 
     // Function for Login
     async function login(data) {
-        console.log('Login funciton begins')
         try {
             setLoginLoading(true);
             const response = await API.post('login', data);
-            console.log(response);
             if (response?.data?.status == true) {
+                setUser(response?.data?.user);
                 localStorage.setItem('token', response?.data?.token);
                 localStorage.setItem('user', JSON.stringify(response?.data?.user));
                 return true;
             }
 
         } catch (err) {
-            console.log(err.response);
             setLoginError(err?.response?.data?.errors);
         }
         finally {
@@ -50,8 +58,20 @@ const AuthProvider = ({ children }) => {
         }
 
     }
+
+    //logout function here
+    async function logout() {
+        try {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            setUser(null);
+        } catch (err) {
+            console.error("Logout error:", err);
+        }
+    }
+
     return (
-        <AuthContext.Provider value={{ register, registerError, registerLoading, loginLoading, loginError, login }}>
+        <AuthContext.Provider value={{ register, registerError, registerLoading, loginLoading, loginError, login, user, logout }}>
             {children}
         </AuthContext.Provider >
     )
