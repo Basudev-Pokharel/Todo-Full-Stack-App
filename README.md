@@ -60,17 +60,30 @@ npm run dev
 
 # Images for your reference
 ## Desktop 
-<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; max-width: 800px; margin: auto;">
-  <img src="./images/Desktop_home.png" alt="Desktop Home" style="width: 100%; border-radius: 5px;" />
-  <img src="./images/Desktop_login.png" alt="Desktop Login" style="width: 100%; border-radius: 5px;" />
-  <img src="./images/Desktop_dashboard.png" alt="Desktop Dashboard" style="width: 100%; border-radius: 5px;" />
-</div>
+## Desktop
+
+<table>
+  <tr>
+    <td><img src="./images/Desktop_home.png" width="400"/></td>
+    <td><img src="./images/Desktop_login.png" width="400"/></td>
+  </tr>
+  <tr>
+    <td><img src="./images/Desktop_dashboard.png" width="400"/></td>
+    <td></td>
+  </tr>
+</table>
 
 ## Mobile
-<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; max-width: 800px; margin: auto;">
-  <img src="./images/movile_home.png" alt="Mobile Home" style="width: 100%; border-radius: 5px;" />
-  <img src="./images/mobile_dashboard.png" alt="Mobile Dashboard" style="width: 100%; border-radius: 5px;" />
-  <img src="./images/mobile_add-project.png" alt="Mobile project add" style="width: 100%; border-radius: 5px;" />
-  <img src="./images/mobile_task_add.png" alt="MobileTask add" style="width: 100%; border-radius: 5px;" />
-  <img src="./images/mobile_finished.png" alt="MobileTask add" style="width: 100%; border-radius: 5px;" />
-</div>
+## Mobile
+
+<table>
+  <tr>
+    <td><img src="./images/movile_home.png" width="250"/></td>
+    <td><img src="./images/mobile_dashboard.png" width="250"/></td>
+    <td><img src="./images/mobile_add-project.png" width="250"/></td>
+  </tr>
+  <tr>
+    <td><img src="./images/mobile_task_add.png" width="250"/></td>
+    <td><img src="./images/mobile_finished.png" width="250"/></td>
+  </tr>
+</table>
