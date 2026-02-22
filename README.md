@@ -55,11 +55,13 @@ cp .env.example .env
 php artisan key:generate
 php artisan migrate --seed
 php artisan serve
+# It will run at 127.0.0.1:8000
 
 # Run Frontend now
 cd ../Frontend
 npm install
 npm run dev
+# It will run at localhost:5173
 ```
 
 
