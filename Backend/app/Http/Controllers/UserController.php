@@ -14,7 +14,7 @@ class UserController extends Controller
         $validate = Validator::make($request->all(), [
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required'
+            'password' => 'required|confirmed'
         ]);
         if ($validate->fails()) {
             return response()->json([
@@ -59,6 +59,10 @@ class UserController extends Controller
                 'token' => $user->createToken('user_token')->plainTextToken,
             ], 200);
         }
+        return response()->json([
+            'status' => false,
+            'errors' => ["login_error" => 'Credentials doesn\'t match'],
+        ], 401);
     }
     public function logout()
     {
