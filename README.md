@@ -34,8 +34,6 @@ todo-app/
 ```
 
 ## Technologies Used
-> machine is windows <br>
-
 
 **Backend**: Laravel(12.0), PHP(8.2), MariaDB(10.4.32), Sanctum(4.0)
 I used XAMPP to provide PHP, MySQL.
@@ -63,6 +61,28 @@ cd ../Frontend
 npm install
 npm run dev
 ```
+
+
+## Environment Setup
+
+Before running the project, configure your **.env** file.
+
+This project was developed using **XAMPP** with the following database configuration:
+
+```
+DB_USERNAME=root
+DB_PASSWORD= 
+```
+> Password is blank by default in XAMPP.
+
+**Seeders** with _fake test data_ are included. After running: ` php artisan migrate --seed `
+
+You can log in using:
+```
+Email: oggy@gmail.com
+Password: password123
+```
+
 
 ## Requirements
 
