@@ -16,7 +16,7 @@ A full-stack **Todo app** built with **Laravel** (backend) and **React** (fronte
 
 This project is built using React (frontend) and Laravel (backend).
 No additional UI libraries or heavy third-party packages were used. I used vanilla **CSS** for styling
-Only core framework features and Axios for API communication are utilized. _⚠⚠ AI, no UI tools_
+Only core framework features and Axios for API communication are utilized. _⚠⚠ no AI, no UI tools_
 
 ## Folder Structure
 ```
