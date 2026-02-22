@@ -5,6 +5,12 @@ export const DataContext = createContext(null);
 const DataProvider = ({ children }) => {
     const [projects, setProjects] = useState([]);
     const [projectLoading, setprojectLoading] = useState(false)
+    // For taks of the specific project
+    const [addTaskLoading, setAddTaskLoading] = useState(false)
+    const [addTaskError, setAddTaskError] = useState(false)
+    // For adding projetcs
+    const [addProjectLoading, setAddProjectLoading] = useState(false)
+    const [addProjectError, setAddProjectError] = useState(false)
 
 
 
@@ -61,10 +67,47 @@ const DataProvider = ({ children }) => {
         }
     }
 
+    // Add Task in the specific project API call
+    async function addTaskInProject(projectId, taskData) {
+        try {
+            setAddTaskLoading(true);
+            let response = await API.post(`task_create/${projectId}`, taskData);
+            if (response?.data?.status === true) {
+                getProjects();
+                return true;
+            }
+        }
+        catch (err) {
+            console.log(err.response);
+            setAddTaskError(err?.response?.data?.errors);
+
+        }
+        finally {
+            setAddTaskLoading(false);
+        }
+    }
+
+    // Add project API call
+    async function addProjectBackend(projectDetails) {
+        try {
+            setAddProjectLoading(true);
+            let response = await API.post('create_project', projectDetails);
+            console.log(response)
+        }
+        catch (err) {
+            console.log(err.response);
+            setAddProjectError(err?.response?.data?.errors);
+        }
+        finally {
+            setAddProjectLoading(false);
+        }
+
+    }
+
 
 
     return (
-        <DataContext.Provider value={{ projects, setProjects, getProjects, projectLoading, markTaskCompleted, deleteCompletedTask }}>
+        <DataContext.Provider value={{ projects, setProjects, getProjects, projectLoading, markTaskCompleted, deleteCompletedTask, addTaskInProject, addTaskLoading, addTaskError, addProjectError, addProjectLoading, addProjectBackend }}>
             {children}
         </DataContext.Provider>
     )
